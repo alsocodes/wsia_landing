@@ -30,13 +30,22 @@ const Header = () => {
     return (
         <>
             <div className="topnav">
-                <ul>
-                    <li><a className="nav-link" href="#"><i class="bi bi-instagram"></i></a></li>
-                    <li><a className="nav-link" href="#"><i class="bi bi-youtube"></i></a></li>
-                    <li><a className="nav-link" href="#"><i class="bi bi-facebook"></i></a></li>
-                    <li><a className="nav-link" href="#"><i class="bi bi-twitter"></i></a></li>
+                <div className="container-fluid container-xl d-flex align-items-center justify-content-between">
+                    <ul className="d-flex align-items-center">
+                        <li><a className="" href="#"><i className="bi bi-telephone-fill"></i> 031-7310886</a></li>
+                        <li><a className="" href="#"><i className="bi bi-envelope-fill"></i> smpn_33sby@yahoo.co.id</a></li>
+                        <li><a className="" href="#"><i className="bi bi-geo-alt-fill"></i> Jl. Putat Gede Selatan 8, Surabaya</a></li>
 
-                </ul>
+                    </ul>
+                    <ul className="align-items-center">
+                        <li><a className="" href="#"><i className="bi bi-instagram"></i></a></li>
+                        <li><a className="" href="#"><i className="bi bi-youtube"></i></a></li>
+                        <li><a className="" href="#"><i className="bi bi-facebook"></i></a></li>
+                        <li><a className="" href="#"><i className="bi bi-twitter"></i></a></li>
+
+                    </ul>
+
+                </div>
             </div>
             <header id="header" className="header">
                 <div className="container-fluid container-xl d-flex align-items-center justify-content-between">
@@ -48,13 +57,8 @@ const Header = () => {
 
                     <nav id="navbar" className="navbar">
                         <ul>
-                            <li><a className="nav-link scrollto active" href="#hero">Home</a></li>
-                            <li><a className="nav-link scrollto" href="#about">About</a></li>
-                            {/* <li><a className="nav-link scrollto" href="#services">Services</a></li> */}
-                            {/* <li><a className="nav-link scrollto" href="#portfolio">Portfolio</a></li> */}
-                            {/* <li><a className="nav-link scrollto" href="#team">Team</a></li> */}
-                            <li><a href="blog.html">Blog</a></li>
-                            <li className="dropdown"><a href="#"><span>Drop Down</span> <i className="bi bi-chevron-down"></i></a>
+                            <li><a className="nav-link scrollto active" href="#hero">Beranda</a></li>
+                            <li className="dropdown"><a href="#"><span>Profil</span> <i className="bi bi-chevron-down"></i></a>
                                 <ul>
                                     <li><a href="#">Drop Down 1</a></li>
                                     <li className="dropdown"><a href="#"><span>Deep Drop Down</span> <i className="bi bi-chevron-right"></i></a>
@@ -71,11 +75,20 @@ const Header = () => {
                                     <li><a href="#">Drop Down 4</a></li>
                                 </ul>
                             </li>
+                            <li><a className="nav-link scrollto" href="#about">Publikasi</a></li>
+                            <li><a className="nav-link scrollto" href="#about">Media</a></li>
+                            <li><a className="nav-link scrollto" href="#about">Galeri</a></li>
+                            <li><a className="nav-link scrollto" href="#about">Kontak</a></li>
+                            {/* <li><a href="blog.html">Blog</a></li> */}
+                            {/* <li><a className="nav-link scrollto" href="#services">Services</a></li> */}
+                            {/* <li><a className="nav-link scrollto" href="#portfolio">Portfolio</a></li> */}
+                            {/* <li><a className="nav-link scrollto" href="#team">Team</a></li> */}
+
                             <li><a className="nav-link scrollto" href="#contact">Contact</a></li>
                             <li>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i className="bi bi-search"></i></button>
+                                <div className="input-group">
+                                    <input type="text" className="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                                    <button className="btn btn-outline-secondary" type="button" id="button-addon2"><i className="bi bi-search"></i></button>
                                 </div>
                             </li>
                             {/* <li><a className="getstarted scrollto" href="#about">Get Started</a></li> */}
