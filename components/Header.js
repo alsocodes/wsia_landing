@@ -29,7 +29,7 @@ const Header = () => {
 
     return (
         <>
-            <div className="topnav">
+            <div className="topnav topnav d-none d-md-block">
                 <div className="container-fluid container-xl d-flex align-items-center justify-content-between">
                     <ul className="d-flex align-items-center">
                         <li><a className="" href="#"><i className="bi bi-telephone-fill"></i> 031-7310886</a></li>
