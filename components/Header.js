@@ -10,7 +10,7 @@ import {
     NavLink
 } from 'reactstrap';
 
-const Header = () => {
+const Header = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [sticky, setSticky] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
@@ -27,21 +27,26 @@ const Header = () => {
         }
     }
 
+    const {
+        general
+    } = props
+
+    console.log(general.phone)
     return (
         <>
             <div className="topnav topnav d-none d-md-block">
                 <div className="container-fluid container-xl d-flex align-items-center justify-content-between">
                     <ul className="d-flex align-items-center">
-                        <li><a className="" href="#"><i className="bi bi-telephone-fill"></i> 031-7310886</a></li>
-                        <li><a className="" href="#"><i className="bi bi-envelope-fill"></i> smpn_33sby@yahoo.co.id</a></li>
-                        <li><a className="" href="#"><i className="bi bi-geo-alt-fill"></i> Jl. Putat Gede Selatan 8, Surabaya</a></li>
+                        <li><a className="" href="#"><i className="bi bi-telephone-fill"></i> {general.phone}</a></li>
+                        <li><a className="" href="#"><i className="bi bi-envelope-fill"></i> {general.email}</a></li>
+                        <li><a className="" href="#"><i className="bi bi-geo-alt-fill"></i> {general.address}</a></li>
 
                     </ul>
                     <ul className="align-items-center">
-                        <li><a className="" href="#"><i className="bi bi-instagram"></i></a></li>
-                        <li><a className="" href="#"><i className="bi bi-youtube"></i></a></li>
-                        <li><a className="" href="#"><i className="bi bi-facebook"></i></a></li>
-                        <li><a className="" href="#"><i className="bi bi-twitter"></i></a></li>
+                        <li><a href={general.instagram}><i className="bi bi-instagram"></i></a></li>
+                        <li><a href={general.youtube}><i className="bi bi-youtube"></i></a></li>
+                        <li><a href={general.facebook}><i className="bi bi-facebook"></i></a></li>
+                        <li><a href={general.twitter}><i className="bi bi-twitter"></i></a></li>
 
                     </ul>
 

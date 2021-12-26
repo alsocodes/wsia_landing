@@ -7,10 +7,11 @@ import LatestNews from "../components/LatestNews";
 import Agenda from "../components/Agenda";
 import GalleryDepan from "../components/GalleryDepan";
 import Footer from "../components/Footer";
-const Index = () => {
+
+const Index = ({ general }) => {
     return (
         <Layout pageTitle="SMP Negeri 33 Suabaya">
-            <Header />
+            <Header general={general} />
             {/* <Hero /> */}
             {/* <HeroCarousel /> */}
             <Carousel2 />
@@ -33,4 +34,21 @@ const Index = () => {
         </Layout>
     )
 }
+
+// This gets called on every request
+export const getServerSideProps = async () => {
+    // Fetch data from external API
+    const res = await fetch(`http://localhost:3007/public/general`)
+    const resJson = await res.json()
+    const general = resJson.result
+
+    // const data = {
+    //     general.result
+    // }
+
+    // Pass data to the page via props
+    // const data = { title: 'Halaman Utama' }
+    return { props: { general } }
+}
+
 export default Index;
