@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import AOS from 'aos';
-const Sambutan = () => {
+import Link from 'next/link'
+import Image from 'next/image'
+const Sambutan = ({ sambutan }) => {
     useEffect(() => {
         AOS.init({
             duration: 300
@@ -18,22 +20,33 @@ const Sambutan = () => {
                     <div className="col-lg-6 d-flex flex-column justify-content-center">
                         <div className="content">
                             <h3 className="cl-sec">Sambutan kepala sekolah</h3>
-                            <h2 className="cl-prim">SMPN33 Surabaya menyiapkan generasi unggul untuk Indonesia Maju</h2>
-                            <p>
-                                Assalamualaikum.... <br />Quisquam vel ut sint cum eos hic dolores aperiam.Sed deserunt et.Inventore et et dolor consequatur itaque ut voluptate sed et.Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.
-                            </p>
+                            <h2 className="cl-prim">{sambutan.title}</h2>
+                            <p>{sambutan.excerpt}</p>
                             <div className="text-center text-lg-start">
-                                <a href="#" className="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
-                                    <span>Baca selengkapnya</span>
-                                    <i className="bi bi-arrow-right"></i>
-                                </a>
+                                <Link href={`/${sambutan.slug}`}>
+                                    <a className="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                                        <span>Baca selengkapnya</span>
+                                        <i className="bi bi-arrow-right"></i>
+                                    </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
 
                     {/* <div className="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200"> */}
                     <div className="col-lg-6 d-flex align-items-center">
-                        <img src="images/sambutan-kepala-sekolah.jpg" className="img-fluid" alt="" />
+                        <div style={{ width: '100%', height: '100%', position: 'relative' }}
+                            className="img-thumbnail">
+                            <Image
+                                src={sambutan.image}
+                                alt={sambutan.title}
+                                // layout="fill"
+                                // width={'100%'}
+                                // height={'auto'}
+                                layout='fill'
+                                objectFit='cover'
+                            />
+                        </div>
                     </div>
 
                 </div>
@@ -41,6 +54,9 @@ const Sambutan = () => {
 
         </section>
     )
+}
+const myLoader = ({ src, width, quality }) => {
+    return `https://example.com/${src}?w=${width}&q=${quality || 75}`
 }
 
 export default Sambutan

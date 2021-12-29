@@ -9,6 +9,7 @@ import {
     NavItem,
     NavLink
 } from 'reactstrap';
+import Link from 'next/link'
 
 const Header = (props) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -28,10 +29,15 @@ const Header = (props) => {
     }
 
     const {
-        general
+        general,
+        menus
     } = props
 
-    console.log(general.phone)
+    // console.log('aaa', menus)
+
+    const generateMenu = () => {
+        <div>aaaa</div>
+    }
     return (
         <>
             <div className="topnav topnav d-none d-md-block">
@@ -43,10 +49,10 @@ const Header = (props) => {
 
                     </ul>
                     <ul className="align-items-center">
-                        <li><a href={general.instagram}><i className="bi bi-instagram"></i></a></li>
-                        <li><a href={general.youtube}><i className="bi bi-youtube"></i></a></li>
-                        <li><a href={general.facebook}><i className="bi bi-facebook"></i></a></li>
-                        <li><a href={general.twitter}><i className="bi bi-twitter"></i></a></li>
+                        {general.instagram ? <li><a href={general.instagram}><i className="bi bi-instagram"></i></a></li> : ""}
+                        {general.youtube ? <li><a href={general.youtube}><i className="bi bi-youtube"></i></a></li> : ""}
+                        {general.facebook ? <li><a href={general.facebook}><i className="bi bi-facebook"></i></a></li> : ""}
+                        {general.twitter ? <li><a href={general.twitter}><i className="bi bi-twitter"></i></a></li> : ""}
 
                     </ul>
 
@@ -62,7 +68,65 @@ const Header = (props) => {
 
                     <nav id="navbar" className="navbar">
                         <ul>
-                            <li><a className="nav-link scrollto active" href="#hero">Beranda</a></li>
+
+                            {menus?.map((menu, key) => {
+                                // console.log(menu)
+                                let children = menu.children
+                                let link = menu.link === '' ? '/' : `/${menu.link}`
+                                return (
+                                    <li key={key} className={children.length > 0 ? `dropdown` : ``}>
+                                        {children.length === 0 ?
+                                            <Link className="nav-link" href={link}>{menu.text}</Link>
+                                            :
+                                            <>
+                                                <Link className="nav-link" href='#'>
+                                                    <a><span>{menu.text}</span> <i className="bi bi-chevron-down"></i></a>
+                                                </Link>
+                                                <ul>
+                                                    {
+                                                        children.map((child, key) => {
+                                                            let sublink = `${link}/${child.link}`
+                                                            let children = child.children
+                                                            return (
+                                                                <li key={key} className={children.length > 0 ? `dropdown` : ``}>
+                                                                    {children.length === 0 ? <Link className="nav-link" href={sublink}>{child.text}</Link>
+                                                                        : <>
+                                                                            <Link className="nav-link" href='#'>
+                                                                                <a><span>{menu.text}</span> <i className="bi bi-chevron-right"></i></a>
+                                                                            </Link>
+                                                                            {children.length > 0 ?
+                                                                                <ul>
+                                                                                    {children.map((item, key) => {
+                                                                                        let subsublink = `${sublink}/${item.link}`;
+                                                                                        return (
+                                                                                            <li key={key}>
+                                                                                                <Link className="nav-link" href={subsublink}>{item.text}</Link>
+                                                                                            </li>
+                                                                                        )
+                                                                                    })}
+                                                                                </ul>
+                                                                                : ""
+                                                                            }
+                                                                        </>
+                                                                    }
+                                                                </li>
+                                                            )
+                                                        })
+
+                                                    }
+                                                </ul>
+                                            </>
+                                        }
+                                    </li>
+                                )
+                            })}
+                            <li>
+                                <div className="input-group">
+                                    <input type="text" className="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                                    <button className="btn btn-outline-secondary" type="button" id="button-addon2"><i className="bi bi-search"></i></button>
+                                </div>
+                            </li>
+                            {/* 
                             <li className="dropdown"><a href="#"><span>Profil</span> <i className="bi bi-chevron-down"></i></a>
                                 <ul>
                                     <li><a href="#">Drop Down 1</a></li>
@@ -80,23 +144,13 @@ const Header = (props) => {
                                     <li><a href="#">Drop Down 4</a></li>
                                 </ul>
                             </li>
-                            <li><a className="nav-link scrollto" href="#about">Publikasi</a></li>
-                            <li><a className="nav-link scrollto" href="#about">Media</a></li>
-                            <li><a className="nav-link scrollto" href="#about">Galeri</a></li>
-                            <li><a className="nav-link scrollto" href="#about">Kontak</a></li>
-                            {/* <li><a href="blog.html">Blog</a></li> */}
-                            {/* <li><a className="nav-link scrollto" href="#services">Services</a></li> */}
-                            {/* <li><a className="nav-link scrollto" href="#portfolio">Portfolio</a></li> */}
-                            {/* <li><a className="nav-link scrollto" href="#team">Team</a></li> */}
-
-                            <li><a className="nav-link scrollto" href="#contact">Contact</a></li>
-                            <li>
-                                <div className="input-group">
-                                    <input type="text" className="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                                    <button className="btn btn-outline-secondary" type="button" id="button-addon2"><i className="bi bi-search"></i></button>
-                                </div>
-                            </li>
-                            {/* <li><a className="getstarted scrollto" href="#about">Get Started</a></li> */}
+                            <li><a className="nav-link" href="#about">Publikasi</a></li>
+                            <li><a className="nav-link" href="#about">Media</a></li>
+                            <li><a className="nav-link" href="#about">Galeri</a></li>
+                            <li><a className="nav-link" href="#about">Kontak</a></li>
+                           
+                            <li><a className="nav-link" href="#contact">Contact</a></li>
+                            */}
                         </ul>
                         <i className="bi bi-list mobile-nav-toggle"></i>
                     </nav>

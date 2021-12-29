@@ -7,15 +7,21 @@ import LatestNews from "../components/LatestNews";
 import Agenda from "../components/Agenda";
 import GalleryDepan from "../components/GalleryDepan";
 import Footer from "../components/Footer";
+import CarouselMain from "../components/CarouselMain";
 
-const Index = ({ general }) => {
+const Index = ({ general, menu, slides, sambutan }) => {
+    console.log('aaa', slides);
     return (
         <Layout pageTitle="SMP Negeri 33 Suabaya">
-            <Header general={general} />
+            <Header
+                general={general}
+                menus={menu?.main}
+            />
             {/* <Hero /> */}
             {/* <HeroCarousel /> */}
-            <Carousel2 />
-            <Sambutan />
+            {/* <Carousel2 slides={slides} /> */}
+            <CarouselMain slides={slides} />
+            <Sambutan sambutan={sambutan} />
             <Tagline />
             <section>
                 <div className="container">
@@ -40,15 +46,22 @@ export const getServerSideProps = async () => {
     // Fetch data from external API
     const res = await fetch(`http://localhost:3007/public/general`)
     const resJson = await res.json()
-    const general = resJson.result
+    const public_data = resJson.result
 
-    // const data = {
-    //     general.result
-    // }
+    // const resMenu = await fetch(`http://localhost:3007/public/menus`)
+    // const resJsonMenu = await resMenu.json()
+    // const menu = resJsonMenu.result
 
-    // Pass data to the page via props
-    // const data = { title: 'Halaman Utama' }
-    return { props: { general } }
+    // // Fetch data from external API
+    // const resSlide = await fetch(`http://localhost:3007/public/slides`)
+    // const resJsonSlide = await resSlide.json()
+    // const slides = resJsonSlide.result
+    const general = public_data.general
+    const menu = public_data.menu
+    const slides = public_data.slides
+    const sambutan = public_data.sambutan
+
+    return { props: { general, menu, slides, sambutan } }
 }
 
 export default Index;
