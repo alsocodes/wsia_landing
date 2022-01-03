@@ -79,7 +79,7 @@ const Header = (props) => {
                                             <Link className="nav-link" href={link}>{menu.text}</Link>
                                             :
                                             <>
-                                                <Link className="nav-link" href='#'>
+                                                <Link className="nav-link" href={link}>
                                                     <a><span>{menu.text}</span> <i className="bi bi-chevron-down"></i></a>
                                                 </Link>
                                                 <ul>
@@ -91,8 +91,8 @@ const Header = (props) => {
                                                                 <li key={key} className={children.length > 0 ? `dropdown` : ``}>
                                                                     {children.length === 0 ? <Link className="nav-link" href={sublink}>{child.text}</Link>
                                                                         : <>
-                                                                            <Link className="nav-link" href='#'>
-                                                                                <a><span>{menu.text}</span> <i className="bi bi-chevron-right"></i></a>
+                                                                            <Link className="nav-link" href={sublink}>
+                                                                                <a><span>{child.text}</span> <i className="bi bi-chevron-right"></i></a>
                                                                             </Link>
                                                                             {children.length > 0 ?
                                                                                 <ul>

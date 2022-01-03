@@ -9,28 +9,25 @@ import GalleryDepan from "../components/GalleryDepan";
 import Footer from "../components/Footer";
 import CarouselMain from "../components/CarouselMain";
 
-const Index = ({ general, menu, slides, sambutan }) => {
+const Index = ({ general, menu, slides, sambutan, headline, agenda, news }) => {
     console.log('aaa', slides);
     return (
-        <Layout pageTitle="SMP Negeri 33 Suabaya">
+        <Layout pageTitle={general.organization}>
             <Header
                 general={general}
                 menus={menu?.main}
             />
-            {/* <Hero /> */}
-            {/* <HeroCarousel /> */}
-            {/* <Carousel2 slides={slides} /> */}
             <CarouselMain slides={slides} />
             <Sambutan sambutan={sambutan} />
-            <Tagline />
+            <Tagline headline={headline} />
             <section>
                 <div className="container">
                     <div className="row recent-blog-posts">
                         <div className="col-md-8 col-sm-12">
-                            <LatestNews />
+                            <LatestNews news={news} />
                         </div>
                         <div className="col-md-4 col-sm-12">
-                            <Agenda />
+                            <Agenda agenda={agenda} />
                         </div>
                     </div>
                 </div>
@@ -44,24 +41,19 @@ const Index = ({ general, menu, slides, sambutan }) => {
 // This gets called on every request
 export const getServerSideProps = async () => {
     // Fetch data from external API
-    const res = await fetch(`http://localhost:3007/public/general`)
+    const res = await fetch(`http://localhost:3007/public/general?data=general,menu,slides,sambutan,headline,agenda,news`)
     const resJson = await res.json()
     const public_data = resJson.result
 
-    // const resMenu = await fetch(`http://localhost:3007/public/menus`)
-    // const resJsonMenu = await resMenu.json()
-    // const menu = resJsonMenu.result
-
-    // // Fetch data from external API
-    // const resSlide = await fetch(`http://localhost:3007/public/slides`)
-    // const resJsonSlide = await resSlide.json()
-    // const slides = resJsonSlide.result
     const general = public_data.general
     const menu = public_data.menu
     const slides = public_data.slides
     const sambutan = public_data.sambutan
+    const headline = public_data.headline
+    const agenda = public_data.agenda
+    const news = public_data.news
 
-    return { props: { general, menu, slides, sambutan } }
+    return { props: { general, menu, slides, sambutan, headline, agenda, news } }
 }
 
 export default Index;
