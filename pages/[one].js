@@ -84,7 +84,7 @@ const Index = ({ general, menu, one, post }) => {
                                             {
                                                 tags.map((item, key) => {
                                                     return (
-                                                        <li><a href="#">{item}</a></li>
+                                                        <li key={key}><a href="#">{item}</a></li>
                                                     )
                                                 })
                                             }

@@ -116,7 +116,7 @@ const Index = ({ menu, general }) => {
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.5611274610037!2d112.69448051437116!3d-7.29066917368302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fc6b4533d72d%3A0xff1374893133af5b!2sJunior%20High%20School%20State%2033%20of%20Surabaya!5e0!3m2!1sen!2sid!4v1641208284854!5m2!1sen!2sid" width="100%" height="450"
                             style={{ border: "1" }}
-                            allowfullscreen=""
+                            allowFullscreen=""
                             loading="lazy" />
                     </div>
 

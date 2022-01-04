@@ -15,7 +15,7 @@ const Blogs = ({ post, sub }) => {
                     const tanggal = item.created_at.split("T")[0]
                     return (
                         // <div className="col-lg-6">
-                        <article className="entry">
+                        <article className="entry" key={key}>
                             <div className="entry-img">
                                 <Image
                                     src={item.image}
