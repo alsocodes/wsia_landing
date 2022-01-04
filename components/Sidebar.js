@@ -2,10 +2,10 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const Sidebar = ({ latest }) => {
+const Sidebar = ({ latest, sub, sidebarTitle }) => {
     return (
         <div className="sidebar" >
-            <h3 className="sidebar-title">Terbaru</h3>
+            <h3 className="sidebar-title">{sidebarTitle}</h3>
             <div class="sidebar-item recent-posts">
                 {
                     latest.map((item, key) => {
@@ -21,7 +21,7 @@ const Sidebar = ({ latest }) => {
                                         objectFit='cover'
                                     />
                                 </div>
-                                <h4><a href="blog-single.html">{item.title}</a></h4>
+                                <h4><Link href={`/${sub}/${item.slug}`}><a>{item.title}</a></Link></h4>
                                 <time datetime={tanggal}>{tanggal}</time>
                             </div>
                         )

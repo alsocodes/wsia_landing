@@ -5,7 +5,7 @@ import Link from 'next/link'
 const LatestNews = ({ news }) => {
     return (
         <div>
-            <h3 className="cl-sec mb-4"><i className="bi bi-newspaper"></i> Informasi Terbaru</h3>
+            <h3 className="section-title-front cl-sec mb-4"><Link href={`/pengumuman`}><a><i className="bi bi-calendar-check"></i> Informasi Terbaru</a></Link></h3>
             <div className="row">
                 {
                     news?.map((item, key) => {

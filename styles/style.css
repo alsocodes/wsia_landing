@@ -155,7 +155,7 @@
   .header {
     transition: all 0.5s;
     z-index: 997;
-    padding: 20px 0;
+    padding: 5px 0;
     background-color: #fff;
     /* background: url(../public/images/bg-header.png) top center no-repeat; */
     /* background-image: linear-gradient(to left,#00a6e0, #62d7ff); */
@@ -1528,7 +1528,7 @@
   }
 
   .entry-single .entry-img{
-    height: 400px !important;
+    height: 440px !important;
   }
 
   .blog .entry .entry-title {
@@ -2319,4 +2319,32 @@
   height: 100vh;
   background-position: center;
   background-size: cover;
+}
+
+.galleries-ku .img-fluid{
+    height: 200px;
+}
+.yt-play {
+  position: absolute;
+    bottom: 0;
+    margin-bottom: 25%;
+    font-size: 50px;
+    color: #FF0000;
+    left: 0;
+    margin-left: 40%;
+}
+
+.portfolio-item{
+  cursor: pointer;
+}
+
+.agenda .post-item .img{
+  width: 80px;
+    float: left;
+    position: relative;
+    height: 80px;
+}
+
+.section-title-front a{
+  color: unset;
 }

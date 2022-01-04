@@ -8,9 +8,20 @@ import Agenda from "../components/Agenda";
 import GalleryDepan from "../components/GalleryDepan";
 import Footer from "../components/Footer";
 import CarouselMain from "../components/CarouselMain";
+import { useEffect } from "react";
+import AOS from 'aos';
+import Article from "../components/Article";
 
-const Index = ({ general, menu, slides, sambutan, headline, agenda, news }) => {
+const Index = ({ general, menu, slides, sambutan, headline, agenda, news, galleries, article }) => {
     console.log('aaa', slides);
+    useEffect(() => {
+        AOS.init({
+            duration: 400,
+            easing: "ease-in-out",
+            once: true,
+            mirror: false
+        });
+    }, [])
     return (
         <Layout pageTitle={general.organization}>
             <Header
@@ -28,11 +39,12 @@ const Index = ({ general, menu, slides, sambutan, headline, agenda, news }) => {
                         </div>
                         <div className="col-md-4 col-sm-12">
                             <Agenda agenda={agenda} />
+                            <Article article={article} />
                         </div>
                     </div>
                 </div>
             </section>
-            <GalleryDepan />
+            <GalleryDepan galleries={galleries} />
             <Footer />
         </Layout>
     )
@@ -41,7 +53,7 @@ const Index = ({ general, menu, slides, sambutan, headline, agenda, news }) => {
 // This gets called on every request
 export const getServerSideProps = async () => {
     // Fetch data from external API
-    const res = await fetch(`http://localhost:3007/public/general?data=general,menu,slides,sambutan,headline,agenda,news`)
+    const res = await fetch(`http://localhost:3007/public/general?data=general,menu,slides,sambutan,headline,agenda,news,gallery,article`)
     const resJson = await res.json()
     const public_data = resJson.result
 
@@ -52,8 +64,10 @@ export const getServerSideProps = async () => {
     const headline = public_data.headline
     const agenda = public_data.agenda
     const news = public_data.news
+    const galleries = public_data.galleries
+    const article = public_data.articles
 
-    return { props: { general, menu, slides, sambutan, headline, agenda, news } }
+    return { props: { general, menu, slides, sambutan, headline, agenda, news, galleries, article } }
 }
 
 export default Index;

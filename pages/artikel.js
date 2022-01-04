@@ -15,7 +15,7 @@ const Index = ({ general, menu, post }) => {
         });
     }, []);
     return (
-        <Layout pageTitle={`Pengumuman, Berita, Informasi | ${general.organization}`}>
+        <Layout pageTitle={`Tulisan / Artikel | ${general.organization}`}>
             <Header
                 general={general}
                 menus={menu?.main}
@@ -26,9 +26,9 @@ const Index = ({ general, menu, post }) => {
 
                         <ol>
                             <li><Link href={`/`}>Beranda</Link></li>
-                            <li>Pengumuman</li>
+                            <li>Artikel</li>
                         </ol>
-                        <h2>Pengumuman, Berita, Informasi</h2>
+                        <h2>Tulisan / Artikel</h2>
                     </div>
                 </section>
 
@@ -36,11 +36,11 @@ const Index = ({ general, menu, post }) => {
                     <div className="container" data-aos="fade-up" >
                         <div className="row" >
                             <div className="col-lg-8 entries" >
-                                <Blogs sub="pengumuman" post={post} />
+                                <Blogs sub="artikel" post={post} />
                             </div >
                             <div className="col-lg-4" >
-                                <Sidebar sidebarTitle="Informasi Terbaru"
-                                    sub="pengumuman"
+                                <Sidebar sidebarTitle="Artikel Terbaru"
+                                    sub="artikel"
                                     latest={post.latest} />
                             </div >
                         </div >
@@ -61,7 +61,7 @@ export const getServerSideProps = async ({ query }) => {
 
     const page = query.page ? query.page : 1
 
-    const res1 = await fetch(`http://localhost:3007/public/posts?type=news&page_size=10&page=${page}`)
+    const res1 = await fetch(`http://localhost:3007/public/posts?type=article&page_size=10&page=${page}`)
     const resJson1 = await res1.json()
     const post = resJson1.result
 

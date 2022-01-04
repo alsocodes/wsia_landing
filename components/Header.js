@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import {
-    Container,
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink
-} from 'reactstrap';
 import Link from 'next/link'
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 const Header = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [sticky, setSticky] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
+    const router = useRouter();
+    const [search, setSearch] = useState('')
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
@@ -33,11 +27,19 @@ const Header = (props) => {
         menus
     } = props
 
-    // console.log('aaa', menus)
-
-    const generateMenu = () => {
-        <div>aaaa</div>
+    const onKeyUps = (e) => {
+        setSearch(e.target.value)
+        if (e.code === 'Enter' && e.target.value !== '') {
+            router.push(`/pencarian?s=${e.target.value}`)
+        }
     }
+
+    const searchNow = () => {
+        if (search !== '') {
+            router.push(`/pencarian?s=${search}`)
+        }
+    }
+
     return (
         <>
             <div className="topnav topnav d-none d-md-block">
@@ -60,11 +62,19 @@ const Header = (props) => {
             </div>
             <header id="header" className="header">
                 <div className="container-fluid container-xl d-flex align-items-center justify-content-between">
-
-                    <a href="index.html" className="logo d-flex align-items-center">
-                        <img src="images/logo.png" alt="" />
-                        <span>SMPN 33 <i>Surabaya</i></span>
-                    </a>
+                    <Link href={`/`}>
+                        <a className="logo d-flex align-items-center">
+                            <div className="img mr-2">
+                                <Image
+                                    alt="Logo SMPN 33 Surabaya"
+                                    src={`/images/logo.png`}
+                                    width="80px"
+                                    height="90px"
+                                />
+                            </div>
+                            <span>SMPN 33 <i>Surabaya</i></span>
+                        </a>
+                    </Link>
 
                     <nav id="navbar" className="navbar">
                         <ul>
@@ -79,7 +89,7 @@ const Header = (props) => {
                                             <Link className="nav-link" href={link}>{menu.text}</Link>
                                             :
                                             <>
-                                                <Link className="nav-link" href={link}>
+                                                <Link className="nav-link" href="#">
                                                     <a><span>{menu.text}</span> <i className="bi bi-chevron-down"></i></a>
                                                 </Link>
                                                 <ul>
@@ -122,8 +132,15 @@ const Header = (props) => {
                             })}
                             <li>
                                 <div className="input-group">
-                                    <input type="text" className="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                                    <button className="btn btn-outline-secondary" type="button" id="button-addon2"><i className="bi bi-search"></i></button>
+                                    <input
+                                        onKeyUp={(event) => onKeyUps(event)}
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Search" aria-label="Search"
+                                        aria-describedby="button-addon2" />
+                                    <button
+                                        onClick={() => searchNow()}
+                                        className="btn btn-outline-secondary" type="button" id="button-addon2"><i className="bi bi-search"></i></button>
                                 </div>
                             </li>
                             {/* 

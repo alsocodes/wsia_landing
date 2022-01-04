@@ -4,17 +4,17 @@ import Link from 'next/link'
 const Agenda = ({ agenda }) => {
     return (
         <div>
-            <h3 className="cl-sec mb-4"><i className="bi bi-calendar-check"></i> Agenda</h3>
+            <h3 className="section-title-front cl-sec mb-4"><Link href={`/agenda`}><a><i className="bi bi-calendar-check"></i> Agenda</a></Link></h3>
             <div className="agenda">
                 {agenda?.map((item, key) => {
                     let date = new Date(item.agenda_date)
                     let d = date.getDate()
                     let m = date.toLocaleString('id', { month: 'short' });
-                    let y = date.toLocaleString('id', { year: '2-digit' });
+                    let y = date.toLocaleString('id', { year: 'numeric' });
                     return (
-                        <div className="post-item clearfix" key={key}>
+                        <div className="post-item clearfix mb-1" key={key}>
                             <div className="calendar-tag">
-                                <div className="calendar-tag-month">{`${m} - ${y}`}</div>
+                                <div className="calendar-tag-month">{`${m}-${y}`}</div>
                                 <div className="calendar-tag-date">{d}</div>
                             </div>
                             <div className="agenda-text">

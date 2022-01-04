@@ -1,19 +1,11 @@
 import React, { useEffect } from 'react'
-import AOS from 'aos';
 import Link from 'next/link'
 import Image from 'next/image'
 const Sambutan = ({ sambutan }) => {
-    useEffect(() => {
-        AOS.init({
-            duration: 300
-        });
-    }, []);
 
     return (
         <section id="about" className="about">
-
-            {/* <div className="container" data-aos="fade-up"> */}
-            <div className="container">
+            <div className="container" data-aos="fade-up">
                 <div className="row gx-0">
 
                     {/* <div className="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200"> */}

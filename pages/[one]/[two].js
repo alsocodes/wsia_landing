@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Header from '../../components/Header'
 import Layout from '../../components/Layout'
@@ -7,13 +7,26 @@ import Sidebar from '../../components/Sidebar'
 import HtmlParser from 'react-html-parser'
 import Image from 'next/image'
 import Footer from "../../components/Footer";
+import AOS from 'aos';
 
-const Index = ({ general, menu, two, post }) => {
+const Index = ({ general, menu, one, two, post }) => {
     const router = useRouter()
-    const { one } = router.query
     console.log('awowow', post)
     const tanggal = post.created_at.split('T')[0]
     const tags = post.tags.split(",")
+    useEffect(() => {
+        AOS.init({
+            duration: 300
+        });
+    }, []);
+
+    // const sidebarFrom = ['pengumuman']
+    let sidebarTitle = 'Terbaru';
+    if (one === 'profil') sidebarTitle = 'Halaman Lainnya';
+    if (one === 'pengumuman') sidebarTitle = 'Informasi Terbaru';
+    if (one === 'agenda') sidebarTitle = 'Agenda Terdekat';
+    if (one === 'artikel') sidebarTitle = 'Artikel Terbaru';
+
     return (
         <Layout pageTitle={`${post.title} | ${general.organization}`}>
             <Header
@@ -27,7 +40,7 @@ const Index = ({ general, menu, two, post }) => {
                         <ol>
                             <li><Link href={`/`}>Beranda</Link></li>
                             <li><Link href={`/${one}`}>{one}</Link></li>
-                            <li><Link href={`/${one}/${two}`}>{`${one}/${two}`}</Link></li>
+                            <li>{`${one}/${two}`}</li>
                         </ol>
                         <h2>{post.title}</h2>
                     </div>
@@ -83,7 +96,7 @@ const Index = ({ general, menu, two, post }) => {
 
                             </div >
                             <div className="col-lg-4" >
-                                <Sidebar latest={post.latest} />
+                                <Sidebar sidebarTitle={sidebarTitle} sub={one} latest={post.latest} />
                             </div >
                         </div >
                     </div >
@@ -103,14 +116,14 @@ export const getServerSideProps = async ({ query }) => {
 
     const general = public_data.general
     const menu = public_data.menu
-    const { two } = query
+    const { one, two } = query
 
     const res1 = await fetch(`http://localhost:3007/public/post/${two}`)
     const resJson1 = await res1.json()
     const post = resJson1.result
 
 
-    return { props: { general, menu, two, post } }
+    return { props: { general, menu, one, two, post } }
 }
 
 
