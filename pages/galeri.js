@@ -81,7 +81,7 @@ const Index = ({ menu, general, galleries, page }) => {
                                                     alt={item.title}
                                                     layout='fill'
                                                     objectFit='cover' />
-                                                {item.type === 'video' ? <span className="yt-play"><i class="bi bi-youtube"></i></span> : ""}
+                                                {item.type === 'video' ? <span className="yt-play"><i className="bi bi-youtube"></i></span> : ""}
                                             </div>
                                             <div className="portfolio-info">
                                                 <h4>{item.title}</h4>

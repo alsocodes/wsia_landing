@@ -58,7 +58,7 @@ const GalleryDepan = ({ galleries }) => {
                                             alt={item.title}
                                             layout='fill'
                                             objectFit='cover' />
-                                        {item.type === 'video' ? <span className="yt-play"><i class="bi bi-youtube"></i></span> : ""}
+                                        {item.type === 'video' ? <span className="yt-play"><i className="bi bi-youtube"></i></span> : ""}
                                     </div>
                                     {/* <img src="images/portfolio/p1.jpg" className="img-fluid" alt="" /> */}
                                     <div className="portfolio-info">

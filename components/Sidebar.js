@@ -6,12 +6,12 @@ const Sidebar = ({ latest, sub, sidebarTitle }) => {
     return (
         <div className="sidebar" >
             <h3 className="sidebar-title">{sidebarTitle}</h3>
-            <div class="sidebar-item recent-posts">
+            <div className="sidebar-item recent-posts">
                 {
                     latest.map((item, key) => {
                         const tanggal = item.created_at.split("T")[0]
                         return (
-                            <div class="post-item clearfix">
+                            <div className="post-item clearfix">
                                 {/* <img src="assets/img/blog/blog-recent-1.jpg" alt=""> */}
                                 <div className="img">
                                     <Image

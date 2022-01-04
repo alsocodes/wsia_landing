@@ -35,7 +35,7 @@ const Index = ({ menu, general, s, posts, page }) => {
                     <div className="container" data-aos="fade-up" >
                         <h3 className="section-title-front cl-sec mb-4">
                             Informasi Terbaru</h3>
-                        <div class="search-results">
+                        <div className="search-results">
                             {
                                 posts?.rows.map((item, key) => {
                                     const tanggal = item.created_at.split("T")[0]
@@ -45,7 +45,7 @@ const Index = ({ menu, general, s, posts, page }) => {
                                     if (item.type === 'news') sub = '/pengumuman'
 
                                     return (
-                                        <div class="post-item clearfix mb-2 p-3" key={key}>
+                                        <div className="post-item clearfix mb-2 p-3" key={key}>
                                             <div className="img img-thumbnail">
                                                 <Link href={`${sub}/${item.slug}`}><a>
                                                     <Image

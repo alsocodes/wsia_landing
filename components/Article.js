@@ -10,7 +10,7 @@ const Article = ({ article }) => {
                 {article?.map((item, key) => {
                     // const tanggal = item.created_at.split("T")[0]
                     return (
-                        <div class="post-item clearfix mb-2" key={key}>
+                        <div className="post-item clearfix mb-2" key={key}>
                             <div className="img">
                                 <Image
                                     src={item.image}
