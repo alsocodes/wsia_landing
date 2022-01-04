@@ -11,7 +11,7 @@ const LatestNews = ({ news }) => {
                     news?.map((item, key) => {
 
                         return (
-                            <div className="col-lg-6 mb-4">
+                            <div className="col-lg-6 mb-4" key={key}>
                                 <div className="post-box">
                                     <div className="post-img">
                                         <Image

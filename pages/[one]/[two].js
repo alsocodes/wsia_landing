@@ -11,7 +11,7 @@ import AOS from 'aos';
 
 const Index = ({ general, menu, one, two, post }) => {
     const router = useRouter()
-    console.log('awowow', post)
+    // console.log('awowow', post)
     const tanggal = post.created_at.split('T')[0]
     const tags = post.tags.split(",")
     useEffect(() => {
@@ -67,7 +67,7 @@ const Index = ({ general, menu, one, two, post }) => {
                                     <div className="entry-meta">
                                         <ul>
                                             <li className="d-flex align-items-center"><i className="bi bi-person"></i> <a href="blog-single.html">{post.user.name}</a></li>
-                                            <li className="d-flex align-items-center"><i className="bi bi-clock"></i> <a href="blog-single.html"><time datetime={tanggal}>{tanggal}</time></a></li>
+                                            <li className="d-flex align-items-center"><i className="bi bi-clock"></i> <a href="blog-single.html"><time dateTime={tanggal}>{tanggal}</time></a></li>
                                             {/* <li className="d-flex align-items-center"><i className="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li> */}
                                         </ul>
                                     </div>
@@ -86,7 +86,7 @@ const Index = ({ general, menu, one, two, post }) => {
                                             {
                                                 tags.map((item, key) => {
                                                     return (
-                                                        <li><a href="#">{item}</a></li>
+                                                        <li key={key}><a href="#">{item}</a></li>
                                                     )
                                                 })
                                             }

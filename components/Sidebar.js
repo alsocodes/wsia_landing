@@ -11,7 +11,7 @@ const Sidebar = ({ latest, sub, sidebarTitle }) => {
                     latest.map((item, key) => {
                         const tanggal = item.created_at.split("T")[0]
                         return (
-                            <div className="post-item clearfix">
+                            <div className="post-item clearfix" key={key}>
                                 {/* <img src="assets/img/blog/blog-recent-1.jpg" alt=""> */}
                                 <div className="img">
                                     <Image
@@ -22,7 +22,7 @@ const Sidebar = ({ latest, sub, sidebarTitle }) => {
                                     />
                                 </div>
                                 <h4><Link href={`/${sub}/${item.slug}`}><a>{item.title}</a></Link></h4>
-                                <time datetime={tanggal}>{tanggal}</time>
+                                <time dateTime={tanggal}>{tanggal}</time>
                             </div>
                         )
                     })

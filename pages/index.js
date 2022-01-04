@@ -13,7 +13,6 @@ import AOS from 'aos';
 import Article from "../components/Article";
 
 const Index = ({ general, menu, slides, sambutan, headline, agenda, news, galleries, article }) => {
-    console.log('aaa', slides);
     useEffect(() => {
         AOS.init({
             duration: 400,

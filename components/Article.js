@@ -23,7 +23,7 @@ const Article = ({ article }) => {
                                 <h5><Link href={`/artikel/${item.slug}`}><a>{item.title}</a></Link></h5>
                                 <p>{item.title.substring(0, 65)}</p>
                             </div>
-                            {/* <time datetime={tanggal}>{tanggal}</time> */}
+                            {/* <time dateTime={tanggal}>{tanggal}</time> */}
                         </div>
 
                     )

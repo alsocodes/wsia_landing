@@ -65,7 +65,7 @@ const Index = ({ general, menu, one, post }) => {
                                     <div className="entry-meta">
                                         <ul>
                                             <li className="d-flex align-items-center"><i className="bi bi-person"></i> <a href="blog-single.html">{post.user.name}</a></li>
-                                            <li className="d-flex align-items-center"><i className="bi bi-clock"></i> <a href="blog-single.html"><time datetime={tanggal}>{tanggal}</time></a></li>
+                                            <li className="d-flex align-items-center"><i className="bi bi-clock"></i> <a href="blog-single.html"><time dateTime={tanggal}>{tanggal}</time></a></li>
                                             {/* <li className="d-flex align-items-center"><i className="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li> */}
                                         </ul>
                                     </div>
