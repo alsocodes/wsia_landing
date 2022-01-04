@@ -130,7 +130,7 @@ const Index = ({ menu, general }) => {
 // This gets called on every request
 export const getServerSideProps = async ({ query }) => {
     // Fetch data from external API
-    const res = await fetch(`http://localhost:3007/public/general?data=general,menu`)
+    const res = await fetch(`${process.env.API_URL}/public/general?data=general,menu`)
     const resJson = await res.json()
     const public_data = resJson.result
 

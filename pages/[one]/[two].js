@@ -61,7 +61,7 @@ const Index = ({ general, menu, one, two, post }) => {
                                     </div>
 
                                     <h2 className="entry-title">
-                                        <a href="blog-single.html">{post.title}</a>
+                                        <a>{post.title}</a>
                                     </h2>
 
                                     <div className="entry-meta">
@@ -110,7 +110,7 @@ const Index = ({ general, menu, one, two, post }) => {
 // This gets called on every request
 export const getServerSideProps = async ({ query }) => {
     // Fetch data from external API
-    const res = await fetch(`http://localhost:3007/public/general?data=general,menu`)
+    const res = await fetch(`${process.env.API_URL}/public/general?data=general,menu`)
     const resJson = await res.json()
     const public_data = resJson.result
 
@@ -118,7 +118,7 @@ export const getServerSideProps = async ({ query }) => {
     const menu = public_data.menu
     const { one, two } = query
 
-    const res1 = await fetch(`http://localhost:3007/public/post/${two}`)
+    const res1 = await fetch(`${process.env.API_URL}/public/post/${two}`)
     const resJson1 = await res1.json()
     const post = resJson1.result
 

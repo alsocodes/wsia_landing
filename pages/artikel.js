@@ -55,13 +55,13 @@ const Index = ({ general, menu, post }) => {
 // This gets called on every request
 export const getServerSideProps = async ({ query }) => {
     // Fetch data from external API
-    const res = await fetch(`http://localhost:3007/public/general?data=general,menu`)
+    const res = await fetch(`${process.env.API_URL}/public/general?data=general,menu`)
     const resJson = await res.json()
     const public_data = resJson.result
 
     const page = query.page ? query.page : 1
 
-    const res1 = await fetch(`http://localhost:3007/public/posts?type=article&page_size=10&page=${page}`)
+    const res1 = await fetch(`${process.env.API_URL}/public/posts?type=article&page_size=10&page=${page}`)
     const resJson1 = await res1.json()
     const post = resJson1.result
 

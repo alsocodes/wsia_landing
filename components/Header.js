@@ -9,6 +9,7 @@ const Header = (props) => {
     const toggle = () => setIsOpen(!isOpen);
     const router = useRouter();
     const [search, setSearch] = useState('')
+    const [toggleMenu, setToggleMenu] = useState(false)
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
@@ -76,7 +77,7 @@ const Header = (props) => {
                         </a>
                     </Link>
 
-                    <nav id="navbar" className="navbar">
+                    <nav id="navbar" className={`navbar ${toggleMenu ? 'navbar-mobile' : ''}`}>
                         <ul>
 
                             {menus?.map((menu, key) => {
@@ -143,66 +144,15 @@ const Header = (props) => {
                                         className="btn btn-outline-secondary" type="button" id="button-addon2"><i className="bi bi-search"></i></button>
                                 </div>
                             </li>
-                            {/* 
-                            <li className="dropdown"><a href="#"><span>Profil</span> <i className="bi bi-chevron-down"></i></a>
-                                <ul>
-                                    <li><a href="#">Drop Down 1</a></li>
-                                    <li className="dropdown"><a href="#"><span>Deep Drop Down</span> <i className="bi bi-chevron-right"></i></a>
-                                        <ul>
-                                            <li><a href="#">Deep Drop Down 1</a></li>
-                                            <li><a href="#">Deep Drop Down 2</a></li>
-                                            <li><a href="#">Deep Drop Down 3</a></li>
-                                            <li><a href="#">Deep Drop Down 4</a></li>
-                                            <li><a href="#">Deep Drop Down 5</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Drop Down 2</a></li>
-                                    <li><a href="#">Drop Down 3</a></li>
-                                    <li><a href="#">Drop Down 4</a></li>
-                                </ul>
-                            </li>
-                            <li><a className="nav-link" href="#about">Publikasi</a></li>
-                            <li><a className="nav-link" href="#about">Media</a></li>
-                            <li><a className="nav-link" href="#about">Galeri</a></li>
-                            <li><a className="nav-link" href="#about">Kontak</a></li>
-                           
-                            <li><a className="nav-link" href="#contact">Contact</a></li>
-                            */}
                         </ul>
-                        <i className="bi bi-list mobile-nav-toggle"></i>
+                        <i onClick={() => setToggleMenu(!toggleMenu)}
+                            className={`bi ${toggleMenu ? 'bi-x' : 'bi-list'} mobile-nav-toggle`}></i>
                     </nav>
 
                 </div>
             </header>
         </>
     )
-
-    // return (
-    //     <div className={`header${sticky ? ' sticky' : ''}`}>
-    //         <Navbar light expand="md">
-    //             <Container>
-    //                 <NavbarBrand href="/">LOGO</NavbarBrand>
-    //                 <NavbarToggler onClick={toggle} />
-    //                 <Collapse isOpen={isOpen} navbar>
-    //                     <Nav className="m-auto" navbar>
-    //                         <NavItem>
-    //                             <NavLink href="/">Home</NavLink>
-    //                         </NavItem>
-    //                         <NavItem>
-    //                             <NavLink href="#feature">Features</NavLink>
-    //                         </NavItem>
-    //                         <NavItem>
-    //                             <NavLink href="#service">Services</NavLink>
-    //                         </NavItem>
-    //                         <NavItem>
-    //                             <NavLink href="#about">About</NavLink>
-    //                         </NavItem>
-    //                     </Nav>
-    //                 </Collapse>
-    //             </Container>
-    //         </Navbar>
-    //     </div>
-    // );
 }
 
 export default Header;

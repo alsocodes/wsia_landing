@@ -12,10 +12,10 @@ const Sambutan = ({ sambutan }) => {
                     <div className="col-lg-6 d-flex flex-column justify-content-center">
                         <div className="content">
                             <h3 className="cl-sec">Sambutan kepala sekolah</h3>
-                            <h2 className="cl-prim">{sambutan.title}</h2>
-                            <p>{sambutan.excerpt}</p>
+                            <h2 className="cl-prim">{sambutan?.title}</h2>
+                            <p>{sambutan?.excerpt}</p>
                             <div className="text-center text-lg-start">
-                                <Link href={`/${sambutan.slug}`}>
+                                <Link href={`/${sambutan?.slug}`}>
                                     <a className="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
                                         <span>Baca selengkapnya</span>
                                         <i className="bi bi-arrow-right"></i>
@@ -27,17 +27,15 @@ const Sambutan = ({ sambutan }) => {
 
                     {/* <div className="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200"> */}
                     <div className="col-lg-6 d-flex align-items-center">
-                        <div style={{ width: '100%', height: '100%', position: 'relative' }}
+                        <div style={{ width: '100%', height: '100%', position: 'relative', minHeight: "300px" }}
                             className="img-thumbnail">
-                            <Image
-                                src={sambutan.image}
-                                alt={sambutan.title}
-                                // layout="fill"
-                                // width={'100%'}
-                                // height={'auto'}
-                                layout='fill'
-                                objectFit='cover'
-                            />
+                            {sambutan?.image ?
+                                <Image
+                                    src={sambutan?.image}
+                                    alt={sambutan?.title}
+                                    layout='fill'
+                                    objectFit='cover'
+                                /> : ""}
                         </div>
                     </div>
 

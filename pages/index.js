@@ -39,6 +39,7 @@ const Index = ({ general, menu, slides, sambutan, headline, agenda, news, galler
                         </div>
                         <div className="col-md-4 col-sm-12">
                             <Agenda agenda={agenda} />
+                            <div className="mb-4"></div>
                             <Article article={article} />
                         </div>
                     </div>
@@ -53,7 +54,7 @@ const Index = ({ general, menu, slides, sambutan, headline, agenda, news, galler
 // This gets called on every request
 export const getServerSideProps = async () => {
     // Fetch data from external API
-    const res = await fetch(`http://localhost:3007/public/general?data=general,menu,slides,sambutan,headline,agenda,news,gallery,article`)
+    const res = await fetch(`${process.env.API_URL}/public/general?data=general,menu,slides,sambutan,headline,agenda,news,gallery,article`)
     const resJson = await res.json()
     const public_data = resJson.result
 

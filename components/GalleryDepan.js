@@ -43,7 +43,7 @@ const GalleryDepan = ({ galleries }) => {
                 slideChangeAnimation="scale-in"
             />
             <div className="container" data-aos="fade-up">
-                <h3 className="section-title-front cl-sec mb-4"><Link href={`/gallery`}><a><i className="bi bi-calendar-check"></i> Galeri Kegiatan</a></Link></h3>
+                <h3 className="section-title-front cl-sec mb-4"><Link href={`/galeri`}><a><i className="bi bi-calendar-check"></i> Galeri Kegiatan</a></Link></h3>
                 <div className="row gy-4 portfolio-container galleries-ku" data-aos="fade-up" data-aos-delay="200">
                     {galleries?.map((item, key) => {
 
@@ -190,29 +190,6 @@ const GalleryDepan = ({ galleries }) => {
 
                 </div>
             </div>
-            {/* {showLightbox && (
-                <Lightbox
-                    mainSrc={largeImages[galIndex]}
-                    nextSrc={largeImages[(galIndex + 1) % largeImages.length]}
-                    prevSrc={largeImages[(galIndex + largeImages.length - 1) % largeImages.length]}
-                    onCloseRequest={() => setShowLightbox(false)}
-                    onMovePrevRequest={() =>
-                        setGalIndex((galIndex + largeImages.length - 1) % largeImages.length)
-                    }
-                    onMoveNextRequest={() =>
-                        setGalIndex((galIndex + 1) % largeImages.length)
-                    }
-                />
-                <ReactImageVideoLightbox
-                    data={data}
-                    startIndex={galIndex}
-                    showResourceCount={true}
-                    onCloseCallback={() => setShowLightbox(false)}
-                    onNavigationCallback={(currentIndex) =>
-                        console.log(`Current index: ${currentIndex}`)
-                    }
-                />
-            )} */}
         </section>
     )
 }
