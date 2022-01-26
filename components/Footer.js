@@ -42,9 +42,9 @@ const Footer = (props) => {
                             <div className="col-lg-2 col-6 footer-links">
                                 <h4>Tautan terkait</h4>
                                 <ul>
-                                    {menu_bottom_2?.map(item => {
+                                    {menu_bottom_2?.map((item, key) => {
                                         return (
-                                            <li><Link href={item.link}><a> <i className="bi bi-chevron-right"></i> {item.text}</a></Link></li>
+                                            <li key={key}><Link href={item.link}><a> <i className="bi bi-chevron-right"></i> {item.text}</a></Link></li>
                                         )
                                     })}
                                 </ul>
