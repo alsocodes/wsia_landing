@@ -2,12 +2,12 @@
   "name": "next3",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dev2.smpn33-sby.sch.id",
+  "homepage": "https://smpn33-sby.sch.id",
   "scripts": {
     "dev": "next dev -p 3003",
     "build": "next build",
     "export": "next export",
-    "start": "next start",
+    "start": "next start -p 3001",
     "lint": "next lint"
   },
   "dependencies": {
