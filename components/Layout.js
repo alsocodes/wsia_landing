@@ -1,8 +1,17 @@
 import React from 'react';
 import Head from 'next/head';
+import NextNProgress from 'nextjs-progressbar';
 const Layout = (props) => {
     return (
         <div>
+            <NextNProgress
+                color="#eb3d00"
+                startPosition={0.3}
+                stopDelayMs={200}
+                height={4}
+                showOnShallow={true}
+                options={{ easing: 'ease', speed: 300, showSpinner: false, }}
+            />
             <Head>
                 <title>{props.pageTitle}</title>
                 <meta charSet="UTF-8" />

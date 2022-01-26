@@ -100,7 +100,10 @@ const Index = ({ general, menu, one, post }) => {
                     </div >
                 </section >
             </main >
-            <Footer />
+            <Footer
+                menu_bottom_1={menu['bottom-1']}
+                menu_bottom_2={menu['bottom-2']}
+                general={general} />
         </Layout >
     )
 }

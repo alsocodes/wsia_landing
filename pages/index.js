@@ -11,6 +11,7 @@ import CarouselMain from "../components/CarouselMain";
 import { useEffect } from "react";
 import AOS from 'aos';
 import Article from "../components/Article";
+import NextNProgress from "nextjs-progressbar";
 
 const Index = ({ general, menu, slides, sambutan, headline, agenda, news, galleries, article }) => {
     useEffect(() => {
@@ -21,6 +22,7 @@ const Index = ({ general, menu, slides, sambutan, headline, agenda, news, galler
             mirror: false
         });
     }, [])
+    console.log(menu['bottom-1'])
     return (
         <Layout pageTitle={general.organization}>
             <Header
@@ -45,7 +47,10 @@ const Index = ({ general, menu, slides, sambutan, headline, agenda, news, galler
                 </div>
             </section>
             <GalleryDepan galleries={galleries} />
-            <Footer />
+            <Footer
+                menu_bottom_1={menu['bottom-1']}
+                menu_bottom_2={menu['bottom-2']}
+                general={general} />
         </Layout>
     )
 }

@@ -52,10 +52,10 @@ const Header = (props) => {
 
                     </ul>
                     <ul className="align-items-center">
-                        {general.instagram ? <li><a href={general.instagram}><i className="bi bi-instagram"></i></a></li> : ""}
-                        {general.youtube ? <li><a href={general.youtube}><i className="bi bi-youtube"></i></a></li> : ""}
-                        {general.facebook ? <li><a href={general.facebook}><i className="bi bi-facebook"></i></a></li> : ""}
-                        {general.twitter ? <li><a href={general.twitter}><i className="bi bi-twitter"></i></a></li> : ""}
+                        {general.instagram ? <li><Link href={general.instagram} ><a><i className="bi bi-instagram"></i></a></Link></li> : ""}
+                        {general.youtube ? <li><Link href={general.youtube} ><a><i className="bi bi-youtube"></i></a></Link></li> : ""}
+                        {general.facebook ? <li><Link href={general.facebook} ><a><i className="bi bi-facebook"></i></a></Link></li> : ""}
+                        {general.twitter ? <li><Link href={general.twitter} ><a><i className="bi bi-twitter"></i></a></Link></li> : ""}
 
                     </ul>
 
