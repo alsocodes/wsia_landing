@@ -6,11 +6,11 @@ const Layout = (props) => {
         <div>
             <NextNProgress
                 color="#eb3d00"
-                startPosition={0.3}
-                stopDelayMs={200}
-                height={4}
+                startPosition={0.8}
+                stopDelayMs={100}
+                height={2}
                 showOnShallow={true}
-                options={{ easing: 'ease', speed: 300, showSpinner: false, }}
+                options={{ easing: 'ease', speed: 200, showSpinner: false, }}
             />
             <Head>
                 <title>{props.pageTitle}</title>
