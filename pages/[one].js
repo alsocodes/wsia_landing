@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import Header from '../components/Header';
-import Layout from '../components/Layout';
-import Link from 'next/link';
-import Sidebar from '../components/Sidebar';
-import HtmlParser from 'react-html-parser';
-import Image from 'next/image';
-import Footer from '../components/Footer';
-import AOS from 'aos';
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
+import Header from "../components/Header";
+import Layout from "../components/Layout";
+import Link from "next/link";
+import Sidebar from "../components/Sidebar";
+import HtmlParser from "react-html-parser";
+import Image from "next/image";
+import Footer from "../components/Footer";
+import AOS from "aos";
 
 const Index = ({ general, menu, one, post }) => {
   const router = useRouter();
-  const tanggal = post.created_at.split('T')[0];
-  const tags = post.tags.split(',');
+  const tanggal = post.created_at.split("T")[0];
+  const tags = post.tags.split(",");
   useEffect(() => {
     AOS.init({
       duration: 300,
@@ -20,18 +20,18 @@ const Index = ({ general, menu, one, post }) => {
   }, []);
 
   // const sidebarFrom = ['pengumuman']
-  let sidebarTitle = 'Halaman lainnya';
-  if (one === 'profil') sidebarTitle = 'Halaman Lainnya';
-  if (one === 'pengumuman') sidebarTitle = 'Informasi Terbaru';
-  if (one === 'agenda') sidebarTitle = 'Agenda Terbaru';
-  if (one === 'artikel') sidebarTitle = 'Artikel Terbaru';
+  let sidebarTitle = "Halaman lainnya";
+  if (one === "profil") sidebarTitle = "Halaman Lainnya";
+  if (one === "pengumuman") sidebarTitle = "Informasi Terbaru";
+  if (one === "agenda") sidebarTitle = "Agenda Terbaru";
+  if (one === "artikel") sidebarTitle = "Artikel Terbaru";
 
   return (
     <Layout pageTitle={`${post.title} | ${general.organization}`}>
       <Header general={general} menus={menu?.main} />
-      <main id='main'>
-        <section className='breadcrumbs'>
-          <div className='container'>
+      <main id="main">
+        <section className="breadcrumbs">
+          <div className="container">
             <ol>
               <li>
                 <Link href={`/`}>Beranda</Link>
@@ -42,33 +42,33 @@ const Index = ({ general, menu, one, post }) => {
           </div>
         </section>
 
-        <section id='blog' className='blog'>
-          <div className='container' data-aos='fade-up'>
-            <div className='row'>
-              <div className='col-lg-8 entries'>
-                <article className='entry entry-single'>
-                  <div className='entry-img'>
+        <section id="blog" className="blog">
+          <div className="container" data-aos="fade-up">
+            <div className="row">
+              <div className="col-lg-8 entries">
+                <article className="entry entry-single">
+                  <div className="entry-img">
                     <Image
                       src={post.image}
                       alt={post.title}
-                      layout='fill'
-                      objectFit='cover'
+                      layout="fill"
+                      objectFit="cover"
                     />
                   </div>
 
-                  <h2 className='entry-title'>
-                    <a href='blog-single.html'>{post.title}</a>
+                  <h2 className="entry-title">
+                    <a href="blog-single.html">{post.title}</a>
                   </h2>
 
-                  <div className='entry-meta'>
+                  <div className="entry-meta">
                     <ul>
-                      <li className='d-flex align-items-center'>
-                        <i className='bi bi-person'></i>{' '}
-                        <a href='blog-single.html'>{post.user.name}</a>
+                      <li className="d-flex align-items-center">
+                        <i className="bi bi-person"></i>{" "}
+                        <a href="blog-single.html">{post.user.name}</a>
                       </li>
-                      <li className='d-flex align-items-center'>
-                        <i className='bi bi-clock'></i>{' '}
-                        <a href='blog-single.html'>
+                      <li className="d-flex align-items-center">
+                        <i className="bi bi-clock"></i>{" "}
+                        <a href="blog-single.html">
                           <time dateTime={tanggal}>{tanggal}</time>
                         </a>
                       </li>
@@ -78,19 +78,19 @@ const Index = ({ general, menu, one, post }) => {
 
                   {/* <div className='entry-content'> */}
                   <div>{HtmlParser(post.content)}</div>
-                  <div className='entry-footer'>
-                    <i className='bi bi-folder'></i>
-                    <ul className='cats'>
+                  <div className="entry-footer">
+                    <i className="bi bi-folder"></i>
+                    <ul className="cats">
                       <li>
-                        <a href='#'>{post.type}</a>
+                        <a href="#">{post.type}</a>
                       </li>
                     </ul>
-                    <i className='bi bi-tags'></i> &nbsp;
-                    <ul className='tags'>
+                    <i className="bi bi-tags"></i> &nbsp;
+                    <ul className="tags">
                       {tags.map((item, key) => {
                         return (
                           <li key={key}>
-                            <a href='#'>{item}</a>
+                            <a href="#">{item}</a>
                           </li>
                         );
                       })}
@@ -98,7 +98,7 @@ const Index = ({ general, menu, one, post }) => {
                   </div>
                 </article>
               </div>
-              <div className='col-lg-4'>
+              <div className="col-lg-4">
                 <Sidebar
                   sidebarTitle={sidebarTitle}
                   sub={one}
@@ -110,8 +110,8 @@ const Index = ({ general, menu, one, post }) => {
         </section>
       </main>
       <Footer
-        menu_bottom_1={menu['bottom-1']}
-        menu_bottom_2={menu['bottom-2']}
+        menu_bottom_1={menu["bottom-1"]}
+        menu_bottom_2={menu["bottom-2"]}
         general={general}
       />
     </Layout>
@@ -122,7 +122,7 @@ const Index = ({ general, menu, one, post }) => {
 export const getServerSideProps = async ({ query }) => {
   // Fetch data from external API
   const res = await fetch(
-    `${process.env.API_URL}/public/general?data=general,menu`
+    `https://eipiai.smpn33-sby.sch.id/public/general?data=general,menu`
   );
   const resJson = await res.json();
   const public_data = resJson.result;
@@ -131,7 +131,9 @@ export const getServerSideProps = async ({ query }) => {
   const menu = public_data.menu;
   const { one } = query;
 
-  const res1 = await fetch(`${process.env.API_URL}/public/post/${one}`);
+  const res1 = await fetch(
+    `https://eipiai.smpn33-sby.sch.id/public/post/${one}`
+  );
   const resJson1 = await res1.json();
   const post = resJson1.result;
 
