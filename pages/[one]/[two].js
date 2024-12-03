@@ -1,19 +1,19 @@
-import React, { useEffect } from "react";
-import { useRouter } from "next/router";
-import Header from "../../components/Header";
-import Layout from "../../components/Layout";
-import Link from "next/link";
-import Sidebar from "../../components/Sidebar";
-import HtmlParser from "react-html-parser";
-import Image from "next/image";
-import Footer from "../../components/Footer";
-import AOS from "aos";
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Header from '../../components/Header';
+import Layout from '../../components/Layout';
+import Link from 'next/link';
+import Sidebar from '../../components/Sidebar';
+import HtmlParser from 'react-html-parser';
+import Image from 'next/image';
+import Footer from '../../components/Footer';
+import AOS from 'aos';
 
 const Index = ({ general, menu, one, two, post }) => {
   const router = useRouter();
   // console.log('awowow', post)
-  const tanggal = post.created_at.split("T")[0];
-  const tags = post.tags.split(",");
+  const tanggal = post.created_at.split('T')[0];
+  const tags = post.tags.split(',');
   useEffect(() => {
     AOS.init({
       duration: 300,
@@ -21,18 +21,18 @@ const Index = ({ general, menu, one, two, post }) => {
   }, []);
 
   // const sidebarFrom = ['pengumuman']
-  let sidebarTitle = "Terbaru";
-  if (one === "profil") sidebarTitle = "Halaman Lainnya";
-  if (one === "pengumuman") sidebarTitle = "Informasi Terbaru";
-  if (one === "agenda") sidebarTitle = "Agenda Terdekat";
-  if (one === "artikel") sidebarTitle = "Artikel Terbaru";
+  let sidebarTitle = 'Terbaru';
+  if (one === 'profil') sidebarTitle = 'Halaman Lainnya';
+  if (one === 'pengumuman') sidebarTitle = 'Informasi Terbaru';
+  if (one === 'agenda') sidebarTitle = 'Agenda Terdekat';
+  if (one === 'artikel') sidebarTitle = 'Artikel Terbaru';
 
   return (
     <Layout pageTitle={`${post.title} | ${general.organization}`}>
       <Header general={general} menus={menu?.main} />
-      <main id="main">
-        <section className="breadcrumbs">
-          <div className="container">
+      <main id='main'>
+        <section className='breadcrumbs'>
+          <div className='container'>
             <ol>
               <li>
                 <Link href={`/`}>Beranda</Link>
@@ -46,56 +46,71 @@ const Index = ({ general, menu, one, two, post }) => {
           </div>
         </section>
 
-        <section id="blog" className="blog">
-          <div className="container" data-aos="fade-up">
-            <div className="row">
-              <div className="col-lg-8 entries">
-                <article className="entry entry-single">
-                  <div className="entry-img">
+        <section id='blog' className='blog'>
+          <div className='container' data-aos='fade-up'>
+            <div className='row'>
+              <div className='col-lg-8 entries'>
+                <article className='entry entry-single'>
+                  <div
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      position: 'relative',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      alignContent: 'center',
+                    }}
+                  >
                     <Image
                       src={post.image}
                       alt={post.title}
-                      layout="fill"
-                      objectFit="cover"
+                      width={800}
+                      height={800}
+                      style={{ width: 'auto', height: '100%' }}
                     />
                   </div>
-
-                  <h2 className="entry-title">
+                  {/* <div className='entry-img'>
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      layout='fill'
+                      objectFit='cover'
+                    />
+                  </div> */}
+                  <h2 className='entry-title'>
                     <a>{post.title}</a>
                   </h2>
-
-                  <div className="entry-meta">
+                  <div className='entry-meta'>
                     <ul>
-                      <li className="d-flex align-items-center">
-                        <i className="bi bi-person"></i>{" "}
-                        <a href="blog-single.html">{post.user.name}</a>
+                      <li className='d-flex align-items-center'>
+                        <i className='bi bi-person'></i>{' '}
+                        <a href='blog-single.html'>{post.user.name}</a>
                       </li>
-                      <li className="d-flex align-items-center">
-                        <i className="bi bi-clock"></i>{" "}
-                        <a href="blog-single.html">
+                      <li className='d-flex align-items-center'>
+                        <i className='bi bi-clock'></i>{' '}
+                        <a href='blog-single.html'>
                           <time dateTime={tanggal}>{tanggal}</time>
                         </a>
                       </li>
                       {/* <li className="d-flex align-items-center"><i className="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li> */}
                     </ul>
                   </div>
-
-                  <div className="entry-content">
+                  <div className='entry-content'>
                     {HtmlParser(post.content)}
                   </div>
-                  <div className="entry-footer">
-                    <i className="bi bi-folder"></i>
-                    <ul className="cats">
+                  <div className='entry-footer'>
+                    <i className='bi bi-folder'></i>
+                    <ul className='cats'>
                       <li>
-                        <a href="#">{post.type}</a>
+                        <a href='#'>{post.type}</a>
                       </li>
                     </ul>
-                    <i className="bi bi-tags"></i> &nbsp;
-                    <ul className="tags">
+                    <i className='bi bi-tags'></i> &nbsp;
+                    <ul className='tags'>
                       {tags.map((item, key) => {
                         return (
                           <li key={key}>
-                            <a href="#">{item}</a>
+                            <a href='#'>{item}</a>
                           </li>
                         );
                       })}
@@ -103,7 +118,7 @@ const Index = ({ general, menu, one, two, post }) => {
                   </div>
                 </article>
               </div>
-              <div className="col-lg-4">
+              <div className='col-lg-4'>
                 <Sidebar
                   sidebarTitle={sidebarTitle}
                   sub={one}
@@ -115,8 +130,8 @@ const Index = ({ general, menu, one, two, post }) => {
         </section>
       </main>
       <Footer
-        menu_bottom_1={menu["bottom-1"]}
-        menu_bottom_2={menu["bottom-2"]}
+        menu_bottom_1={menu['bottom-1']}
+        menu_bottom_2={menu['bottom-2']}
         general={general}
       />
     </Layout>
